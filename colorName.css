@@ -37,6 +37,10 @@ button {
     border-radius: 5px;
 }
 
+button:hover{
+    opacity: 60%;
+}
+
 .kanit-thin {
     font-family: "Kanit", sans-serif;
     font-weight: 100;

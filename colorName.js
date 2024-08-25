@@ -12,10 +12,17 @@ addEventListener("DOMContentLoaded", function(){
         const alphabetMap = new Map();
 
         for (let i = 0; i < 26; i++) {
-            const letter = String.fromCharCode(97 + i); // 97 is the ASCII code for 'a'
+            const letter = String.fromCharCode(97 + i);
             alphabetMap.set(letter, i+1);
         }
 
+        for(let i = 0; i < 32; i++){
+            const letter2 = String.fromCharCode(224 + i);
+            alphabetMap.set(letter2, i+27)
+        }
+
+
+        console.log([...alphabetMap.entries()]);
 
         function getValue(n){
             let value = 0;
@@ -48,24 +55,8 @@ addEventListener("DOMContentLoaded", function(){
             return 255 - color;
         }
 
-
-
-        const bodyElement = document.querySelector('body');
-        const computedStyle = window.getComputedStyle(bodyElement);
-        const backgroundColor = computedStyle.backgroundColor;
-        function rgbToHex2(rgb) {
-            const rgbValues = rgb.match(/\d+/g).map(Number);
-            return "#" + rgbValues.map(value => {
-                return value.toString(16).padStart(2, '0');
-            }).join('');
-        }
-
-
-        const hexColor = rgbToHex2(backgroundColor);
-
-
-        document.getElementById("hex").innerText = hexColor;
-        document.getElementById("rgb").innerText = backgroundColor;
+        document.getElementById("hex").innerText = rgbToHex(red, green, blue);
+        document.getElementById("rgb").innerText = "rgb(" + red + ", " + green + ", " + blue + ")";
     });
 
 
