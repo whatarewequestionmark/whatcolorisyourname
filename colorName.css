@@ -47,7 +47,7 @@ button:hover{
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 600px) {
     h1{
         font-size: 5vw;
     }
@@ -63,7 +63,7 @@ button:hover{
     }
 
     form {
-        width: 40vw;
+        width: 60vw;
     }
 
 }
