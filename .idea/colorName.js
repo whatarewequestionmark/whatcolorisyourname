@@ -1,6 +1,8 @@
 
 
 addEventListener("DOMContentLoaded", function(){
+
+
     document.getElementById("button").addEventListener("click", function(){
 
         let first = document.getElementById("first").value;
@@ -33,15 +35,40 @@ addEventListener("DOMContentLoaded", function(){
             return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
         }
 
-
-
         let red = getValue(first);
         let green = getValue(middle);
         let blue = getValue(last);
 
         console.log(rgbToHex(red, green, blue));
         document.body.style.backgroundColor = rgbToHex(red, green, blue);
+
+        document.body.style.color = rgbToHex(calculateOpposite(red), calculateOpposite(green), calculateOpposite(blue))
+
+        function calculateOpposite(color){
+            return 255 - color;
+        }
+
+
+
+        const bodyElement = document.querySelector('body');
+        const computedStyle = window.getComputedStyle(bodyElement);
+        const backgroundColor = computedStyle.backgroundColor;
+        function rgbToHex2(rgb) {
+            const rgbValues = rgb.match(/\d+/g).map(Number);
+            return "#" + rgbValues.map(value => {
+                return value.toString(16).padStart(2, '0');
+            }).join('');
+        }
+
+
+        const hexColor = rgbToHex2(backgroundColor);
+
+
+        document.getElementById("hex").innerText = hexColor;
+        document.getElementById("rgb").innerText = backgroundColor;
     });
+
+
 
 
 });
